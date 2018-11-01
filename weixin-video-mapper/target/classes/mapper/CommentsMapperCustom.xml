@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.mapper.CommentsMapperCustom">
+    <resultMap id="BaseResultMap" type="com.lee.pojo.vo.CommentsVO">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <!--<result column="father_comment_id" jdbcType="VARCHAR" property="fatherCommentId"/>-->
+        <!--<result column="to_user_id" jdbcType="VARCHAR" property="toUserId"/>-->
+        <result column="video_id" jdbcType="VARCHAR" property="videoId"/>
+        <result column="from_user_id" jdbcType="VARCHAR" property="fromUserId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="comment" jdbcType="LONGVARCHAR" property="comment"/>
+        <!-- 评论者头像地址 -->
+        <result column="face_image" property="faceImage" jdbcType="VARCHAR"/>
+        <!-- 评论者昵称 -->
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <!-- 被评论者用户昵称 -->
+        <result column="toNickname" property="toNickname" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryComments" resultMap="BaseResultMap" parameterType="String">
+      SELECT
+          c.*,
+          u1.face_image AS face_image,
+          u1.nickname AS nickname,
+          u2.nickname AS toNickname
+      FROM
+          comments c
+          LEFT JOIN users u1 ON c.from_user_id = u1.id
+          LEFT JOIN users u2 ON c.to_user_id = u2.id
+      WHERE
+          c.video_id = #{videoId}
+      ORDER BY
+          c.create_time DESC
+  </select>
+
+</mapper>

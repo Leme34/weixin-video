@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wei-xin-video-demo.iml" filepath="$PROJECT_DIR$/wei-xin-video-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-video-common/weixin-video-common.iml" filepath="$PROJECT_DIR$/weixin-video-common/weixin-video-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-video-mapper/weixin-video-mapper.iml" filepath="$PROJECT_DIR$/weixin-video-mapper/weixin-video-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-video-pojo/weixin-video-pojo.iml" filepath="$PROJECT_DIR$/weixin-video-pojo/weixin-video-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-video-service/weixin-video-service.iml" filepath="$PROJECT_DIR$/weixin-video-service/weixin-video-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixin-video-web/weixin-video-web.iml" filepath="$PROJECT_DIR$/weixin-video-web/weixin-video-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--
+        出现错误：Cannot resolve classpath entry: /Program Files/IBM/SQLLIB/java/db2java.zip
+        解决办法：将本地的MAVEN仓库中的mysql驱动引入进来
+    -->
+    <classPathEntry location="D:\Maven_Repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--取消生成注解-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/weixin-video"
+                        userId="root"
+                        password="***">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--
+            targetPackage：javaBean生成在指定包下
+            targetProject：指定生成在指定工程下
+            即项目路径+包名.\src\main\java\com.lee.ssmtest.bean
+        -->
+        <javaModelGenerator
+                targetPackage="com.lee.pojo"
+                targetProject=".\src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetPackage:mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.lee.mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 指定mapper接口类生成的位置: .\src\main\java\com.lee.ssmtest.mapper下 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.lee.mapper"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--指定要生成的表的策略
+            tableName：必须参数，指定数据库中指定生成的对应mapper的表名
+            domainObjectName：表对应的javaBean类名
+        -->
+        <table tableName="bgm"></table>
+        <table tableName="comments" ></table>
+        <table tableName="search_records" ></table>
+        <table tableName="users" ></table>
+        <table tableName="users_fans" ></table>
+        <table tableName="users_like_videos" ></table>
+        <table tableName="users_report" ></table>
+        <table tableName="videos" ></table>
+
+    </context>
+</generatorConfiguration>
