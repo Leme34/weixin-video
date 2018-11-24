@@ -29,7 +29,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //获取请求头信息(USER_REDIS_SESSION+":"+userId作为redis中分布式session的key ,userToken也是session的value)
+        //获取请求头信息(USER_REDIS_SESSION+":"+userId作为redis中分布式session的key ,userToken是session的value)
         String userId = request.getHeader("headerUserId");
         String userToken = request.getHeader("headerUserToken");
         System.out.println("userId="+userId);
